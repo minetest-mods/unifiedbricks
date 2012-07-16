@@ -1,6 +1,6 @@
 --Unified Bricks by Vsevolod Borislav (wowiamdiamonds)
 --
---License: GPLv2/later
+--License: WTFPL
 --
 --Depends: default, unifieddyes
 --
@@ -270,6 +270,74 @@ register_clay_craft_four_reducedfat = function(color_combo,color_one,color_two,c
 	})
 end
 
+--for example, register_clay_block("dark_red_s50","Dark red (low saturation)")
+register_clay_block = function(name,formalname)
+	minetest.register_node("unifiedbricks:" .. name .. "_clayblock", {
+		description = formalname .. " clay",
+		tile_images = {"unifiedbricks_" .. name .. "_clayblock.png"},
+		is_ground_content = true,
+		groups = {crumbly=3},
+		drop = "unifiedbricks:" .. name .. "_clay 4",
+		sounds = default.node_sound_dirt_defaults({
+			footstep = "",
+		}),
+	})
+end
+
+register_clay_lump = function(name,formalname)
+	minetest.register_craftitem("unifiedbricks:" .. name .. "_clay", {
+		description = formalname .. " clay",
+		inventory_image = "unifiedbricks_" .. name .. "_clay.png",
+	})	
+end
+
+register_brick = function(name,formalname)
+	minetest.register_craftitem("unifiedbricks:" .. name .. "_brick", {
+		description = formalname .. " brick",
+		inventory_image = "unifiedbricks_" .. name .. "_brick.png",
+	})	
+end
+
+register_brick_block = function(name,formalname)
+	minetest.register_node("unifiedbricks:" .. name .. "_brickblock", {
+		description = formalname .. " bricks",
+		tile_images = {"unifiedbricks_" .. name .. "_brickblock.png"},
+		is_ground_content = true,
+		groups = {cracky=3},
+		drop = "unifiedbricks_" .. name .. "_brick 4",
+		sounds = default.node_sound_stone_defaults(),
+	})
+end
+
+register_clay_block_craft = function(color)
+	minetest.register_craft({
+		output = "unifiedbricks:" .. color .. "_clayblock",
+		recipe = {
+			{"unifiedbricks:" .. color .. "_clay", "unifiedbricks:" .. color .. "_clay"},
+			{"unifiedbricks:" .. color .. "_clay", "unifiedbricks:" .. color .. "_clay"},
+		}
+	})
+end
+
+register_brick_cooking = function(color)
+	minetest.register_craft({
+		type = "cooking",
+		output = "unifiedbricks:" .. color .. "_brick",
+		recipe = "unifiedbricks:" .. color .. "_clay",
+	})
+end
+
+register_brick_block_craft = function(color)
+	minetest.register_craft({
+		output = "unifiedbricks:" .. color .. "_brickblock",
+		recipe = {
+			{"unifiedbricks:" .. color .. "_brick", "unifiedbricks:" .. color .. "_brick"},
+			{"unifiedbricks:" .. color .. "_brick", "unifiedbricks:" .. color .. "_brick"},
+		}
+	})
+end
+
+
 register_clay_craft("green","blue","yellow")
 register_clay_craft("cyan","blue","green")
 register_clay_craft("magenta","blue","red")
@@ -281,137 +349,43 @@ register_clay_craft("violet","magenta","blue")
 register_clay_craft("redviolet","magenta","red")
 
 --White
-minetest.register_craftitem("unifiedbricks:white_clay", {
-	description = "White Clay",
-	inventory_image = "unifiedbricks_white_clay.png",
-})
-minetest.register_craft({
-    type = "cooking",
-    output = "unifiedbricks:white_brick",
-    recipe = "unifiedbricks:white_clay",
-})
-minetest.register_craft({
-	output = "unifiedbricks:white_brickblock",
-	recipe = {
-		{"unifiedbricks:white_brick", "unifiedbricks:white_brick"},
-		{"unifiedbricks:white_brick", "unifiedbricks:white_brick"},
-	}
-})
-minetest.register_node("unifiedbricks:white_brickblock", {
-	description = "White bricks",
-	tile_images = {"unifiedbricks_white_brickblock.png"},
-	is_ground_content = true,
-	groups = {cracky=3},
-	drop = "unifiedbricks_white_brick 4",
-	sounds = default.node_sound_stone_defaults(),
-})
+register_clay_lump("white","White")
+register_brick_block("white","White")
+register_clay_block_craft("white")
+register_brick_cooking("white")
+register_brick_block_craft("white")
 
 --Light grey
-minetest.register_craftitem("unifiedbricks:lightgrey_clay", {
-	description = "Light Grey Clay",
-	inventory_image = "unifiedbricks_lightgrey_clay.png",
-})
+
+register_clay_lump("lightgrey","Light grey")
+register_brick_block("lightgrey","Light grey")
 register_clay_craft_three_reducedfat("lightgrey","white","white","black")
-minetest.register_craft({
-    type = "cooking",
-    output = "unifiedbricks:lightgrey_brick",
-    recipe = "unifiedbricks:lightgrey_clay",
-})
-minetest.register_craft({
-	output = "unifiedbricks:lightgrey_brickblock",
-	recipe = {
-		{"unifiedbricks:lightgrey_brick", "unifiedbricks:lightgrey_brick"},
-		{"unifiedbricks:lightgrey_brick", "unifiedbricks:lightgrey_brick"},
-	}
-})
-minetest.register_node("unifiedbricks:lightgrey_brickblock", {
-	description = "Lightgrey bricks",
-	tile_images = {"unifiedbricks_lightgrey_brickblock.png"},
-	is_ground_content = true,
-	groups = {cracky=3},
-	drop = "unifiedbricks_lightgrey_brick 4",
-	sounds = default.node_sound_stone_defaults(),
-})
+register_clay_block_craft("lightgrey")
+register_brick_cooking("lightgrey")
+register_brick_block_craft("lightgrey")
 
 --Medium grey
-minetest.register_craftitem("unifiedbricks:grey_clay", {
-	description = "Medium Grey Clay",
-	inventory_image = "unifiedbricks_mediumgrey_clay.png",
-})
+register_clay_lump("grey","Grey")
+register_brick_block("grey","Grey")
 register_clay_craft("grey","white","black")
-minetest.register_craft({
-    type = "cooking",
-    output = "unifiedbricks:grey_brick",
-    recipe = "unifiedbricks:grey_clay",
-})
-minetest.register_craft({
-	output = "unifiedbricks:grey_brickblock",
-	recipe = {
-		{"unifiedbricks:grey_brick", "unifiedbricks:grey_brick"},
-		{"unifiedbricks:grey_brick", "unifiedbricks:grey_brick"},
-	}
-})
-minetest.register_node("unifiedbricks:grey_brickblock", {
-	description = "Grey bricks",
-	tile_images = {"unifiedbricks_grey_brickblock.png"},
-	is_ground_content = true,
-	groups = {cracky=3},
-	drop = "unifiedbricks_grey_brick 4",
-	sounds = default.node_sound_stone_defaults(),
-})
+register_clay_block_craft("grey")
+register_brick_cooking("grey")
+register_brick_block_craft("grey")
 
 --Dark grey
-minetest.register_craftitem("unifiedbricks:darkgrey_clay", {
-	description = "Dark Grey Clay",
-	inventory_image = "unifiedbricks_darkgrey_clay.png",
-})
+register_clay_lump("darkgrey","Dark grey")
+register_brick_block("darkgrey","Dark grey")
 register_clay_craft_three_reducedfat("darkgrey","black","black","white")
-minetest.register_craft({
-    type = "cooking",
-    output = "unifiedbricks:darkgrey_brick",
-    recipe = "unifiedbricks:darkgrey_clay",
-})
-minetest.register_craft({
-	output = "unifiedbricks:darkgrey_brickblock",
-	recipe = {
-		{"unifiedbricks:darkgrey_brick", "unifiedbricks:darkgrey_brick"},
-		{"unifiedbricks:darkgrey_brick", "unifiedbricks:darkgrey_brick"},
-	}
-})
-minetest.register_node("unifiedbricks:darkgrey_brickblock", {
-	description = "Dark grey bricks",
-	tile_images = {"unifiedbricks_darkgrey_brickblock.png"},
-	is_ground_content = true,
-	groups = {cracky=3},
-	drop = "unifiedbricks_darkgrey_brick 4",
-	sounds = default.node_sound_stone_defaults(),
-})
+register_clay_block_craft("darkgrey")
+register_brick_cooking("darkgrey")
+register_brick_block_craft("darkgrey")
 
 --Black
-minetest.register_craftitem("unifiedbricks:black_clay", {
-	description = "Black Clay",
-	inventory_image = "unifiedbricks_black_clay.png",
-})
-minetest.register_craft({
-    type = "cooking",
-    output = "unifiedbricks:black_brick",
-    recipe = "unifiedbricks:black_clay",
-})
-minetest.register_craft({
-	output = "unifiedbricks:black_brickblock",
-	recipe = {
-		{"unifiedbricks:black_brick", "unifiedbricks:black_brick"},
-		{"unifiedbricks:black_brick", "unifiedbricks:black_brick"},
-	}
-})
-minetest.register_node("unifiedbricks:black_brickblock", {
-	description = "Black bricks",
-	tile_images = {"unifiedbricks_black_brickblock.png"},
-	is_ground_content = true,
-	groups = {cracky=3},
-	drop = "unifiedbricks_black_brick 4",
-	sounds = default.node_sound_stone_defaults(),
-})
+register_clay_lump("black","Black")
+register_brick_block("black","Black")
+register_clay_block_craft("black")
+register_brick_cooking("black")
+register_brick_block_craft("black")
 
 HUES = {
 	"red",
@@ -426,20 +400,6 @@ HUES = {
 	"violet",
 	"magenta",
 	"redviolet"
-}
-HUESFORMAL = {
-	"red",
-	"orange",
-	"yellow",
-	"lime",
-	"green",
-	"aqua",
-	"cyan",
-	"sky blue",
-	"blue",
-	"violet",
-	"magenta",
-	"red-violet"
 }
 DARKNESS = {"dark_","dark_","medium_","medium_","",""}
 DARKNESSFORMAL = {"Dark ","Dark ","Medium ","Medium ","Bright ","Bright "}
@@ -470,40 +430,14 @@ for i = 1, 12 do
 
 	for k = 1, 6 do
 		--three different kinds of darkness, three different kinds of saturation
+		register_clay_block(DARKNESS[k] .. hue .. SATURATION[k], DARKNESSFORMAL[k] .. hue .. SATURATIONFORMAL[k])
+		register_clay_lump(DARKNESS[k] .. hue .. SATURATION[k], DARKNESSFORMAL[k] .. hue .. SATURATIONFORMAL[k])
+		register_brick(DARKNESS[k] .. hue .. SATURATION[k], DARKNESSFORMAL[k] .. hue .. SATURATIONFORMAL[k])
+		register_brick_block(DARKNESS[k] .. hue .. SATURATION[k], DARKNESSFORMAL[k] .. hue .. SATURATIONFORMAL[k])
 		
-		minetest.register_craftitem("unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_clay", {
-			description = DARKNESSFORMAL[k] .. HUESFORMAL[i] .. SATURATIONFORMAL[k] .. " clay",
-			inventory_image = "unifiedbricks_" .. DARKNESS[k] .. hue .. SATURATION[k] ..  "_clay.png"
-		})
-
-		minetest.register_craftitem("unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brick", {
-			description = DARKNESSFORMAL[k] .. HUESFORMAL[i] .. SATURATIONFORMAL[k] .. " brick",
-			inventory_image = "unifiedbricks_" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brick.png"
-		})
-
-		minetest.register_node("unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brickblock", {
-			description = DARKNESSFORMAL[k] .. HUESFORMAL[i] .. SATURATIONFORMAL[k] .. " bricks",
-			tile_images = {"unifiedbricks_" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brickblock.png"},
-			is_ground_content = true,
-			groups = {cracky=3},
-			drop = "unifiedbricks_" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brick 4",
-			sounds = default.node_sound_stone_defaults(),
-		})
-		
-		minetest.register_craft({
-			output = "unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brickblock",
-			recipe = {
-				{"unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brick", "unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brick"},
-				{"unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brick", "unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brick"},
-			}
-		})
-		
-		minetest.register_craft({
-			type = "cooking",
-			output = "unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_brick",
-			recipe = "unifiedbricks:" .. DARKNESS[k] .. hue .. SATURATION[k] .. "_clay",
-		})
-
+		register_clay_block_craft(DARKNESS[k] .. hue .. SATURATION[k])
+		register_brick_block_craft(DARKNESS[k] .. hue .. SATURATION[k])
+		register_brick_cooking(DARKNESS[k] .. hue .. SATURATION[k])
 	end
 	
 end
