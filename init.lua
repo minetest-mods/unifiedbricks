@@ -98,7 +98,7 @@ FORMALDARKNESS = {
 register_clay_block = function(name,formalname)
 	minetest.register_node("unifiedbricks:" .. name .. TYPES[1], {
 		description = formalname .. FORMALTYPES[1],
-		tile_images = {"unifiedbricks_" .. name .. TYPES[1] .. ".png"},
+		tile_images = {"unifiedbricks_" .. TYPES[1] .. name .. ".png"},
 		is_ground_content = true,
 		groups = {crumbly=3},
 		drop = "unifiedbricks:" .. name .. TYPES[2] .. " 4",
@@ -110,19 +110,19 @@ end
 register_clay_lump = function(name,formalname)
 	minetest.register_craftitem("unifiedbricks:" .. name .. TYPES[2], {
 		description = formalname .. FORMALTYPES[2],
-		inventory_image = "unifiedbricks_" .. name .. TYPES[2] .. ".png",
+		inventory_image = "unifiedbricks_" .. TYPES[2] .. name .. ".png",
 	})
 end
 register_brick = function(name,formalname)
 	minetest.register_craftitem("unifiedbricks:" .. name .. TYPES[3], {
 		description = formalname .. FORMALTYPES[3],
-		inventory_image = "unifiedbricks_" .. name .. TYPES[3] .. ".png",
+		inventory_image = "unifiedbricks_" .. TYPES[3] .. name .. ".png",
 	})
 end
 register_brick_block = function(name,formalname)
 	minetest.register_node("unifiedbricks:" .. name .. TYPES[4], {
 		description = formalname .. FORMALTYPES[4],
-		tile_images = {"unifiedbricks_" .. name .. TYPES[4] .. ".png"},
+		tile_images = {"unifiedbricks_" .. TYPES[4] .. name .. ".png"},
 		is_ground_content = true,
 		groups = {cracky=3},
 		drop = "unifiedbricks_" .. name .. TYPES[3] .." 4",
