@@ -43,10 +43,10 @@ HUES = {
 	"white"
 }
 TYPES = {
-	"_clayblock",
-	"_clay",
-	"_brick",
-	"_brickblock"
+	"clayblock_",
+	"clay_",
+	"brick_",
+	"brickblock_"
 }
 SATURATION = {
 	"_s50",
@@ -96,36 +96,36 @@ FORMALDARKNESS = {
 }
 
 register_clay_block = function(name,formalname)
-	minetest.register_node("unifiedbricks:" .. name .. TYPES[1], {
+	minetest.register_node("unifiedbricks:" .. TYPES[1] .. name, {
 		description = formalname .. FORMALTYPES[1],
-		tile_images = {"unifiedbricks" .. TYPES[1] .. name .. ".png"},
+		tile_images = {"unifiedbricks_" .. TYPES[1] .. name .. ".png"},
 		is_ground_content = true,
 		groups = {crumbly=3},
-		drop = "unifiedbricks:" .. name .. TYPES[2] .. " 4",
+		drop = "unifiedbricks:" .. TYPES[2] .. name .. " 4",
 		sounds = default.node_sound_dirt_defaults({
 			footstep = "",
 		}),
 	})
 end
 register_clay_lump = function(name,formalname)
-	minetest.register_craftitem("unifiedbricks:" .. name .. TYPES[2], {
+	minetest.register_craftitem("unifiedbricks:" .. TYPES[2] .. name, {
 		description = formalname .. FORMALTYPES[2],
-		inventory_image = "unifiedbricks" .. TYPES[2] .. name .. ".png",
+		inventory_image = "unifiedbricks_" .. TYPES[2] .. name .. ".png",
 	})
 end
 register_brick = function(name,formalname)
-	minetest.register_craftitem("unifiedbricks:" .. name .. TYPES[3], {
+	minetest.register_craftitem("unifiedbricks:" .. TYPES[3] .. name, {
 		description = formalname .. FORMALTYPES[3],
-		inventory_image = "unifiedbricks" .. TYPES[3] .. name .. ".png",
+		inventory_image = "unifiedbricks_" .. TYPES[3] .. name .. ".png",
 	})
 end
 register_brick_block = function(name,formalname)
-	minetest.register_node("unifiedbricks:" .. name .. TYPES[4], {
+	minetest.register_node("unifiedbricks:" .. TYPES[4] .. name, {
 		description = formalname .. FORMALTYPES[4],
-		tile_images = {"unifiedbricks" .. TYPES[4] .. name .. ".png"},
+		tile_images = {"unifiedbricks_" .. TYPES[4] .. name .. ".png"},
 		is_ground_content = true,
 		groups = {cracky=3},
-		drop = "unifiedbricks_" .. name .. TYPES[3] .." 4",
+		drop = "unifiedbricks_" .. TYPES[3] .. name .." 4",
 		sounds = default.node_sound_stone_defaults(),
 	})
 end
@@ -133,25 +133,25 @@ end
 register_clay_craft = function(color_combo,color_one,color_two)
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_two,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
+               "unifiedbricks:clay" .. color_one,
                "unifieddyes:" .. color_two,
 		},
 	})
@@ -159,63 +159,63 @@ end
 register_clay_craft_three = function(color_combo,color_one,color_two,color_three)
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 3",
+       output = "unifiedbricks:clay" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
                "unifieddyes:" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
+               "unifiedbricks:clay" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:" .. color_two .. "_clay",
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_two,
                "unifieddyes:" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
+               "unifiedbricks:clay" .. color_one,
                "unifieddyes:" .. color_two,
                "unifieddyes:" .. color_three,
 		},
@@ -224,185 +224,185 @@ end
 register_clay_craft_three_reducedfat = function(color_combo,color_one,color_two,color_three)
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 3",
+       output = "unifiedbricks:clay" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
                "unifieddyes:" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
+               "unifiedbricks:clay" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_two,
                "unifieddyes:" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_three,
 		},
 	})
 end
 register_clay_craft_four_reducedfat = function(color_combo,color_one,color_two,color_three,color_four)
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 4",
+       output = "unifiedbricks:clay" .. color_combo .. " 4",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
-               "unifiedbricks:" .. color_three .. "_clay",
-			   "unifiedbricks:" .. color_four .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay" .. color_three,
+			   "unifiedbricks:clay" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 3",
+       output = "unifiedbricks:clay" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay" .. color_three,
 			   "unifieddyes:" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 3",
+       output = "unifiedbricks:clay" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
                "unifieddyes:" .. color_three,
-			   "unifiedbricks:" .. color_four .. "_clay",
+			   "unifiedbricks:clay" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 3",
+       output = "unifiedbricks:clay" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
+               "unifiedbricks:clay" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:" .. color_three .. "_clay",
-			   "unifiedbricks:" .. color_four .. "_clay",
+               "unifiedbricks:clay" .. color_three,
+			   "unifiedbricks:clay" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:" .. color_two .. "_clay",
-               "unifiedbricks:" .. color_three .. "_clay",
+               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay" .. color_three,
 			   "unifieddyes:" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_two,
                "unifieddyes:" .. color_three,
-			   "unifiedbricks:" .. color_four .. "_clay",
+			   "unifiedbricks:clay" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
-       recipe = {
-               "unifieddyes:" .. color_one,
-               "unifieddyes:" .. color_two,
-               "unifiedbricks:" .. color_three .. "_clay",
-			   "unifiedbricks:" .. color_four .. "_clay",
-		},
-	})
-	minetest.register_craft( {
-       type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 2",
-       recipe = {
-               "unifiedbricks:" .. color_one .. "_clay",
-               "unifiedbricks:" .. color_two .. "_clay",
-               "unifieddyes:" .. color_three,
-			   "unifieddyes:" .. color_four,
-		},
-	})
-	minetest.register_craft( {
-       type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
                "unifieddyes:" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:" .. color_three .. "_clay",
-			   "unifieddyes:" .. color_four,
+               "unifiedbricks:clay" .. color_three,
+			   "unifiedbricks:clay" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 2",
        recipe = {
-               "unifieddyes:" .. color_one,
-               "unifiedbricks:" .. color_two .. "_clay",
+               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay" .. color_two,
                "unifieddyes:" .. color_three,
 			   "unifieddyes:" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:" .. color_combo .. "_clay 1",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       recipe = {
+               "unifieddyes:" .. color_one,
+               "unifieddyes:" .. color_two,
+               "unifiedbricks:clay" .. color_three,
+			   "unifieddyes:" .. color_four,
+		},
+	})
+	minetest.register_craft( {
+       type = "shapeless",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       recipe = {
+               "unifieddyes:" .. color_one,
+               "unifiedbricks:clay" .. color_two,
+               "unifieddyes:" .. color_three,
+			   "unifieddyes:" .. color_four,
+		},
+	})
+	minetest.register_craft( {
+       type = "shapeless",
+       output = "unifiedbricks:clay" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
                "unifieddyes:" .. color_two,
                "unifieddyes:" .. color_three,
-			   "unifiedbricks:" .. color_four .. "_clay",
+			   "unifiedbricks:clay" .. color_four,
 		},
 	})
 end
 
 register_clay_block_craft = function(color)
 	minetest.register_craft({
-		output = "unifiedbricks:" .. color .. TYPES[1],
+		output = "unifiedbricks:" .. TYPES[1] .. color,
 		recipe = {
-			{"unifiedbricks:" .. color .. TYPES[2], "unifiedbricks:" .. color .. TYPES[2]},
-			{"unifiedbricks:" .. color .. TYPES[2], "unifiedbricks:" .. color .. TYPES[2]},
+			{"unifiedbricks:" .. TYPES[2] .. color, "unifiedbricks:" .. TYPES[2] .. color},
+			{"unifiedbricks:" .. TYPES[2] .. color, "unifiedbricks:" .. TYPES[2] .. color},
 		}
 	})
 end
 register_brick_cooking = function(color)
 	minetest.register_craft({
 		type = "cooking",
-		output = "unifiedbricks:" .. color .. TYPES[3],
-		recipe = "unifiedbricks:" .. color .. TYPES[2],
+		output = "unifiedbricks:" .. TYPES[3] .. color,
+		recipe = "unifiedbricks:" .. TYPES[2] .. color,
 	})
 end
 register_brick_block_craft = function(color)
 	minetest.register_craft({
-		output = "unifiedbricks:" .. color .. TYPES[4],
+		output = "unifiedbricks:" .. TYPES[4] .. color,
 		recipe = {
-			{"unifiedbricks:" .. color .. TYPES[3], "unifiedbricks:" .. color .. TYPES[3]},
-			{"unifiedbricks:" .. color .. TYPES[3], "unifiedbricks:" .. color .. TYPES[3]},
+			{"unifiedbricks:" .. TYPES[3] .. color, "unifiedbricks:" .. TYPES[3] .. color},
+			{"unifiedbricks:" .. TYPES[3] .. color, "unifiedbricks:" .. TYPES[3] .. color},
 		}
 	})
 end
