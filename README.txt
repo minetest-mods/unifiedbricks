@@ -10,6 +10,8 @@ all of the colors that unifieddyes offers (which amounts to 89 clayblocks, clay
 lumps, bricks, brick blocks, leaving 356 total).
 
 Settings at the top of init.lua:
+	SETTING_allow_default_coloring = 1
+		When set to 1, default clay + unifieddyes dye = unifiedbricks clay lump
 	SETTING_allow_hues = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 		Each number represents a hue (red, orange, yellow ...). When a value is
 		set to 0, that hue is disabled.
@@ -22,6 +24,9 @@ Settings at the top of init.lua:
 
 	Furthermore, a list of names is included below that, from which you can
 	change, for example, "red" to "mahogany".
+
+WARNING: if you remove something important, such as clay lumps, you'll have to
+cheat to get some items.
 	
 If you don't like what I did, tell me or use one of github's fancy features or 
 do it yourself or whatever. Hint: I would absolutely love to have some better
