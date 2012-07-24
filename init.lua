@@ -13,6 +13,8 @@ minetest.register_alias("unifieddyes:grey","unifieddyes:grey_paint")
 minetest.register_alias("unifieddyes:darkgrey","unifieddyes:darkgrey_paint")
 
 --1 indicates yes, 0 indicates no
+--default:clay_lump + unifieddyes:color = unifiedbricks:color
+SETTING_allow_default_coloring = 0
 --red, orange, yellow, lime, green, aqua, cyan, skyblue, blue, violet, magenta,
 --redviolet, black, darkgrey, mediumgrey, lightgrey, white, respectively (by default)
 SETTING_allow_hues = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
@@ -127,6 +129,17 @@ register_brick_block = function(name,formalname)
 		groups = {cracky=3},
 		drop = "unifiedbricks_" .. TYPES[3] .. name .." 4",
 		sounds = default.node_sound_stone_defaults(),
+	})
+end
+
+register_clay_craft_default = function(color)
+	minetest.register_craft( {
+		type = "shapeless",
+		output = "unifiedbricks:clay_" .. color,
+		recipe = {
+				"default:clay_lump",
+				"unifieddyes:" .. color,
+		},
 	})
 end
 
@@ -462,38 +475,53 @@ end
 
 --REGISTERS ALL CLAY LUMP CRAFTING RECIPES
 if SETTING_allow_types[2] == 1 then
-	if SETTING_allow_hues[2] == 1 then register_clay_craft("orange","yellow","red") end
-	if SETTING_allow_hues[4] == 1 then register_clay_craft("lime","green","yellow") end
-	if SETTING_allow_hues[5] == 1 then register_clay_craft("green","blue","yellow") end
-	if SETTING_allow_hues[6] == 1 then register_clay_craft("aqua","green","cyan") end
-	if SETTING_allow_hues[7] == 1 then register_clay_craft("cyan","blue","green") end
-	if SETTING_allow_hues[8] == 1 then register_clay_craft("skyblue","cyan","blue") end
-	if SETTING_allow_hues[10] == 1 then register_clay_craft("violet","magenta","blue") end
-	if SETTING_allow_hues[11] == 1 then register_clay_craft("magenta","blue","red") end
-	if SETTING_allow_hues[12] == 1 then register_clay_craft("redviolet","magenta","red") end
+	if SETTING_allow_saturation[2] + SETTING_allow_darkness[3] == 2 then
+		if SETTING_allow_hues[2] == 1 then register_clay_craft("orange","yellow","red") end
+		if SETTING_allow_hues[4] == 1 then register_clay_craft("lime","green","yellow") end
+		if SETTING_allow_hues[5] == 1 then register_clay_craft("green","blue","yellow") end
+		if SETTING_allow_hues[6] == 1 then register_clay_craft("aqua","green","cyan") end
+		if SETTING_allow_hues[7] == 1 then register_clay_craft("cyan","blue","green") end
+		if SETTING_allow_hues[8] == 1 then register_clay_craft("skyblue","cyan","blue") end
+		if SETTING_allow_hues[10] == 1 then register_clay_craft("violet","magenta","blue") end
+		if SETTING_allow_hues[11] == 1 then register_clay_craft("magenta","blue","red") end
+		if SETTING_allow_hues[12] == 1 then register_clay_craft("redviolet","magenta","red") end
 
-	if SETTING_allow_hues[14] == 1 then register_clay_craft("darkgrey","black","black","white") end
-	if SETTING_allow_hues[15] == 1 then register_clay_craft("grey","white","black") end
-	if SETTING_allow_hues[16] == 1 then register_clay_craft_three_reducedfat("lightgrey","white","white","black") end
-
+		if SETTING_allow_hues[14] == 1 then register_clay_craft("darkgrey","black","black","white") end
+		if SETTING_allow_hues[15] == 1 then register_clay_craft("grey","white","black") end
+		if SETTING_allow_hues[16] == 1 then register_clay_craft_three_reducedfat("lightgrey","white","white","black") end
+		
+		if SETTING_allow_default_coloring == 1 then
+			for i = 13,17 do
+				if SETTING_allow_hues[i] == 1 then register_clay_craft_default(HUES[i]) end
+			end
+		end
+	end
+	
 	for i = 1,12 do
 	if SETTING_allow_hues[i] == 1 then
 		if SETTING_allow_darkness[1] + SETTING_allow_saturation[1] == 2 then
 			register_clay_craft(DARKNESS[1] .. HUES[i] .. SATURATION[1],HUES[i],"darkgrey")
-			register_clay_craft_four_reducedfat(DARKNESS[1] .. HUES[i] .. SATURATION[1],"black","black","white",HUES[i]) end
+			register_clay_craft_four_reducedfat(DARKNESS[1] .. HUES[i] .. SATURATION[1],"black","black","white",HUES[i])
+			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[1] .. HUES[i] .. SATURATION[1]) end end
 		if SETTING_allow_darkness[1] + SETTING_allow_saturation[2] == 2 then
-			register_clay_craft_three_reducedfat(DARKNESS[1] .. HUES[i] .. SATURATION[2],"black","black",HUES[i]) end
+			register_clay_craft_three_reducedfat(DARKNESS[1] .. HUES[i] .. SATURATION[2],"black","black",HUES[i])
+			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[1] .. HUES[i] .. SATURATION[2]) end end
 		if SETTING_allow_darkness[2] + SETTING_allow_saturation[1] == 2 then
 			register_clay_craft(DARKNESS[2] .. HUES[i] .. SATURATION[1],HUES[i],"grey")
-			register_clay_craft_three(DARKNESS[2] .. HUES[i] .. SATURATION[1],HUES[i],"black","white") end
+			register_clay_craft_three(DARKNESS[2] .. HUES[i] .. SATURATION[1],HUES[i],"black","white")
+			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[2] .. HUES[i] .. SATURATION[1]) end end
 		if SETTING_allow_darkness[2] + SETTING_allow_saturation[2] == 2 then
 			register_clay_craft(DARKNESS[2] .. HUES[i] .. SATURATION[2],HUES[i],"black")
+			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[2] .. HUES[i] .. SATURATION[2]) end end
 		if SETTING_allow_darkness[3] + SETTING_allow_saturation[1] == 2 then
-			register_clay_craft(DARKNESS[3] .. HUES[i] .. SATURATION[1],HUES[i],"lightgrey") end
-			register_clay_craft_four_reducedfat(DARKNESS[3] .. HUES[i] .. SATURATION[1],"white","white","black",HUES[i]) end
+			register_clay_craft(DARKNESS[3] .. HUES[i] .. SATURATION[1],HUES[i],"lightgrey")
+			register_clay_craft_four_reducedfat(DARKNESS[3] .. HUES[i] .. SATURATION[1],"white","white","black",HUES[i])
+			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[3] .. HUES[i] .. SATURATION[1]) end end
+		if SETTING_allow_darkness[3] + SETTING_allow_saturation[2] == 2 then
+			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[3] .. HUES[i] .. SATURATION[2]) end end
 		if SETTING_allow_darkness[4] + SETTING_allow_saturation[1] == 2 then
 			register_clay_craft(DARKNESS[4] .. HUES[i] .. SATURATION[1],HUES[i],"white")
-		end
+			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[4] .. HUES[i] .. SATURATION[2]) end end
 	end
 	end
 end
