@@ -14,7 +14,7 @@ minetest.register_alias("unifieddyes:darkgrey","unifieddyes:darkgrey_paint")
 
 --1 indicates yes, 0 indicates no
 --default:clay_lump + unifieddyes:color = unifiedbricks:color
-SETTING_allow_default_coloring = 0
+SETTING_allow_default_coloring = 1
 --red, orange, yellow, lime, green, aqua, cyan, skyblue, blue, violet, magenta,
 --redviolet, black, darkgrey, mediumgrey, lightgrey, white, respectively (by default)
 SETTING_allow_hues = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
@@ -146,25 +146,25 @@ end
 register_clay_craft = function(color_combo,color_one,color_two)
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_two,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay_" .. color_one,
                "unifieddyes:" .. color_two,
 		},
 	})
@@ -172,63 +172,63 @@ end
 register_clay_craft_three = function(color_combo,color_one,color_two,color_three)
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 3",
+       output = "unifiedbricks:clay_" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
+               "unifiedbricks:clay_" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
                "unifieddyes:" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay_" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:clay" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_two,
+               "unifiedbricks:clay_" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_two,
                "unifieddyes:" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay_" .. color_one,
                "unifieddyes:" .. color_two,
                "unifieddyes:" .. color_three,
 		},
@@ -237,159 +237,159 @@ end
 register_clay_craft_three_reducedfat = function(color_combo,color_one,color_two,color_three)
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 3",
+       output = "unifiedbricks:clay_" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
+               "unifiedbricks:clay_" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
                "unifieddyes:" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay_" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_two,
                "unifieddyes:" .. color_three,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_three,
 		},
 	})
 end
 register_clay_craft_four_reducedfat = function(color_combo,color_one,color_two,color_three,color_four)
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 4",
+       output = "unifiedbricks:clay_" .. color_combo .. " 4",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
-               "unifiedbricks:clay" .. color_three,
-			   "unifiedbricks:clay" .. color_four,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
+               "unifiedbricks:clay_" .. color_three,
+			   "unifiedbricks:clay_" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 3",
+       output = "unifiedbricks:clay_" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
+               "unifiedbricks:clay_" .. color_three,
 			   "unifieddyes:" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 3",
+       output = "unifiedbricks:clay_" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
                "unifieddyes:" .. color_three,
-			   "unifiedbricks:clay" .. color_four,
+			   "unifiedbricks:clay_" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 3",
+       output = "unifiedbricks:clay_" .. color_combo .. " 3",
        recipe = {
-               "unifiedbricks:clay" .. color_one,
+               "unifiedbricks:clay_" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:clay" .. color_three,
-			   "unifiedbricks:clay" .. color_four,
+               "unifiedbricks:clay_" .. color_three,
+			   "unifiedbricks:clay_" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:clay" .. color_two,
-               "unifiedbricks:clay" .. color_three,
+               "unifiedbricks:clay_" .. color_two,
+               "unifiedbricks:clay_" .. color_three,
 			   "unifieddyes:" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
                "unifieddyes:" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_two,
                "unifieddyes:" .. color_three,
-			   "unifiedbricks:clay" .. color_four,
+			   "unifiedbricks:clay_" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
-       recipe = {
-               "unifieddyes:" .. color_one,
-               "unifieddyes:" .. color_two,
-               "unifiedbricks:clay" .. color_three,
-			   "unifiedbricks:clay" .. color_four,
-		},
-	})
-	minetest.register_craft( {
-       type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 2",
-       recipe = {
-               "unifiedbricks:clay" .. color_one,
-               "unifiedbricks:clay" .. color_two,
-               "unifieddyes:" .. color_three,
-			   "unifieddyes:" .. color_four,
-		},
-	})
-	minetest.register_craft( {
-       type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
                "unifieddyes:" .. color_one,
                "unifieddyes:" .. color_two,
-               "unifiedbricks:clay" .. color_three,
-			   "unifieddyes:" .. color_four,
+               "unifiedbricks:clay_" .. color_three,
+			   "unifiedbricks:clay_" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 2",
        recipe = {
-               "unifieddyes:" .. color_one,
-               "unifiedbricks:clay" .. color_two,
+               "unifiedbricks:clay_" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
                "unifieddyes:" .. color_three,
 			   "unifieddyes:" .. color_four,
 		},
 	})
 	minetest.register_craft( {
        type = "shapeless",
-       output = "unifiedbricks:clay" .. color_combo .. " 1",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
+       recipe = {
+               "unifieddyes:" .. color_one,
+               "unifieddyes:" .. color_two,
+               "unifiedbricks:clay_" .. color_three,
+			   "unifieddyes:" .. color_four,
+		},
+	})
+	minetest.register_craft( {
+       type = "shapeless",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
+       recipe = {
+               "unifieddyes:" .. color_one,
+               "unifiedbricks:clay_" .. color_two,
+               "unifieddyes:" .. color_three,
+			   "unifieddyes:" .. color_four,
+		},
+	})
+	minetest.register_craft( {
+       type = "shapeless",
+       output = "unifiedbricks:clay_" .. color_combo .. " 1",
        recipe = {
                "unifieddyes:" .. color_one,
                "unifieddyes:" .. color_two,
                "unifieddyes:" .. color_three,
-			   "unifiedbricks:clay" .. color_four,
+			   "unifiedbricks:clay_" .. color_four,
 		},
 	})
 end
@@ -422,54 +422,64 @@ end
 
 --REGISTERS ALL NODES AND CRAFTITEMS
 for i = 1,17 do
-if SETTING_allow_hues[i] == 1 then
-	for j = 1,4 do
-	if SETTING_allow_types[j] == 1 then
-	if i > 12 then
-		formalname = FORMALHUES[i]
-		name = HUES[i]
-		if j == 1 then register_clay_block(name,formalname)
-		elseif j == 2 then register_clay_lump(name,formalname)
-		elseif j == 3 then register_brick(name,formalname)
-		else register_brick_block(name,formalname) end
-	else
-		for k = 1,4 do
-		if SETTING_allow_darkness[k] == 1 then
-			for l = 1,2 do
-			if SETTING_allow_saturation[l] == 1 then
-				if k == 4 and l == 1 then
-				else
-					formalname = FORMALDARKNESS[k] .. FORMALHUES[i] .. FORMALSATURATION[l]
-					name = DARKNESS[k] .. HUES[i] .. SATURATION[l]
+	if SETTING_allow_hues[i] == 1 then
+		for j = 1,4 do
+			if SETTING_allow_types[j] == 1 then
+				if i > 12 then
+					formalname = FORMALHUES[i]
+					name = HUES[i]
 					if j == 1 then register_clay_block(name,formalname)
 					elseif j == 2 then register_clay_lump(name,formalname)
 					elseif j == 3 then register_brick(name,formalname)
 					else register_brick_block(name,formalname) end
+				else
+					for k = 1,4 do
+						if SETTING_allow_darkness[k] == 1 then
+							if k == 4 then
+								formalname = FORMALDARKNESS[k] .. FORMALHUES[i]
+								name = DARKNESS[k] .. HUES[i]
+								if j == 1 then register_clay_block(name,formalname)
+								elseif j == 2 then register_clay_lump(name,formalname)
+								elseif j == 3 then register_brick(name,formalname)
+								else register_brick_block(name,formalname) end
+							else
+								for l = 1,2 do
+									if SETTING_allow_saturation[l] == 1 then
+										formalname = FORMALDARKNESS[k] .. FORMALHUES[i] .. FORMALSATURATION[l]
+										name = DARKNESS[k] .. HUES[i] .. SATURATION[l]
+										if j == 1 then register_clay_block(name,formalname)
+										elseif j == 2 then register_clay_lump(name,formalname)
+										elseif j == 3 then register_brick(name,formalname)
+										else register_brick_block(name,formalname) end
+									end
+								end
+							end
+						end
+					end
 				end
 			end
-			end
-		end
 		end
 	end
-	end
-	end
-end
 end
 
 --REGISTERS ALL CLAY BLOCK CRAFTING RECIPES
 if SETTING_allow_types[1] + SETTING_allow_types[2] == 2 then
 	for i = 1,17 do
-	if SETTING_allow_hues[i] == 1 then
-		for k = 1,4 do
-		if SETTING_allow_darkness[k] == 1 then
-			for l = 1,2 do
-			if SETTING_allow_saturation[l] == 1 then
-				register_clay_block_craft(DARKNESS[k] .. HUES[i] .. SATURATION[l])
-			end
+		if SETTING_allow_hues[i] == 1 then
+			if i > 12 then
+				register_clay_block_craft(HUES[i])
+			else
+				for k = 1,4 do
+					if SETTING_allow_darkness[k] == 1 then
+						for l = 1,2 do
+							if SETTING_allow_saturation[l] == 1 then
+								register_clay_block_craft(DARKNESS[k] .. HUES[i] .. SATURATION[l])
+							end
+						end
+					end
+				end
 			end
 		end
-		end
-	end
 	end
 end
 
@@ -486,7 +496,7 @@ if SETTING_allow_types[2] == 1 then
 		if SETTING_allow_hues[11] == 1 then register_clay_craft("magenta","blue","red") end
 		if SETTING_allow_hues[12] == 1 then register_clay_craft("redviolet","magenta","red") end
 
-		if SETTING_allow_hues[14] == 1 then register_clay_craft("darkgrey","black","black","white") end
+		if SETTING_allow_hues[14] == 1 then register_clay_craft_three_reducedfat("darkgrey","black","black","white") end
 		if SETTING_allow_hues[15] == 1 then register_clay_craft("grey","white","black") end
 		if SETTING_allow_hues[16] == 1 then register_clay_craft_three_reducedfat("lightgrey","white","white","black") end
 		
@@ -498,65 +508,73 @@ if SETTING_allow_types[2] == 1 then
 	end
 	
 	for i = 1,12 do
-	if SETTING_allow_hues[i] == 1 then
-		if SETTING_allow_darkness[1] + SETTING_allow_saturation[1] == 2 then
-			register_clay_craft(DARKNESS[1] .. HUES[i] .. SATURATION[1],HUES[i],"darkgrey")
-			register_clay_craft_four_reducedfat(DARKNESS[1] .. HUES[i] .. SATURATION[1],"black","black","white",HUES[i])
-			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[1] .. HUES[i] .. SATURATION[1]) end end
-		if SETTING_allow_darkness[1] + SETTING_allow_saturation[2] == 2 then
-			register_clay_craft_three_reducedfat(DARKNESS[1] .. HUES[i] .. SATURATION[2],"black","black",HUES[i])
-			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[1] .. HUES[i] .. SATURATION[2]) end end
-		if SETTING_allow_darkness[2] + SETTING_allow_saturation[1] == 2 then
-			register_clay_craft(DARKNESS[2] .. HUES[i] .. SATURATION[1],HUES[i],"grey")
-			register_clay_craft_three(DARKNESS[2] .. HUES[i] .. SATURATION[1],HUES[i],"black","white")
-			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[2] .. HUES[i] .. SATURATION[1]) end end
-		if SETTING_allow_darkness[2] + SETTING_allow_saturation[2] == 2 then
-			register_clay_craft(DARKNESS[2] .. HUES[i] .. SATURATION[2],HUES[i],"black")
-			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[2] .. HUES[i] .. SATURATION[2]) end end
-		if SETTING_allow_darkness[3] + SETTING_allow_saturation[1] == 2 then
-			register_clay_craft(DARKNESS[3] .. HUES[i] .. SATURATION[1],HUES[i],"lightgrey")
-			register_clay_craft_four_reducedfat(DARKNESS[3] .. HUES[i] .. SATURATION[1],"white","white","black",HUES[i])
-			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[3] .. HUES[i] .. SATURATION[1]) end end
-		if SETTING_allow_darkness[3] + SETTING_allow_saturation[2] == 2 then
-			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[3] .. HUES[i] .. SATURATION[2]) end end
-		if SETTING_allow_darkness[4] + SETTING_allow_saturation[1] == 2 then
-			register_clay_craft(DARKNESS[4] .. HUES[i] .. SATURATION[1],HUES[i],"white")
-			if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[4] .. HUES[i] .. SATURATION[2]) end end
-	end
+		if SETTING_allow_hues[i] == 1 then
+			if SETTING_allow_darkness[1] + SETTING_allow_saturation[1] == 2 then --dark s50
+				register_clay_craft(DARKNESS[1] .. HUES[i] .. SATURATION[1],HUES[i],"darkgrey")
+				register_clay_craft_four_reducedfat(DARKNESS[1] .. HUES[i] .. SATURATION[1],"black","black","white",HUES[i])
+				if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[1] .. HUES[i] .. SATURATION[1]) end end
+			if SETTING_allow_darkness[1] + SETTING_allow_saturation[2] == 2 then --dark
+				register_clay_craft_three_reducedfat(DARKNESS[1] .. HUES[i] .. SATURATION[2],"black","black",HUES[i])
+				if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[1] .. HUES[i] .. SATURATION[2]) end end
+			if SETTING_allow_darkness[2] + SETTING_allow_saturation[1] == 2 then --medium s50
+				register_clay_craft(DARKNESS[2] .. HUES[i] .. SATURATION[1],HUES[i],"grey")
+				register_clay_craft_three(DARKNESS[2] .. HUES[i] .. SATURATION[1],HUES[i],"black","white")
+				if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[2] .. HUES[i] .. SATURATION[1]) end end
+			if SETTING_allow_darkness[2] + SETTING_allow_saturation[2] == 2 then --medium
+				register_clay_craft(DARKNESS[2] .. HUES[i] .. SATURATION[2],HUES[i],"black")
+				if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[2] .. HUES[i] .. SATURATION[2]) end end
+			if SETTING_allow_darkness[3] + SETTING_allow_saturation[1] == 2 then --bright s50
+				register_clay_craft(DARKNESS[3] .. HUES[i] .. SATURATION[1],HUES[i],"lightgrey")
+				register_clay_craft_four_reducedfat(DARKNESS[3] .. HUES[i] .. SATURATION[1],"white","white","black",HUES[i])
+				if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[3] .. HUES[i] .. SATURATION[1]) end end
+			if SETTING_allow_darkness[3] + SETTING_allow_saturation[2] == 2 then --bright
+				if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[3] .. HUES[i] .. SATURATION[2]) end end
+			if SETTING_allow_darkness[4] + SETTING_allow_saturation[1] == 2 then --light
+				register_clay_craft(DARKNESS[4] .. HUES[i] .. SATURATION[1],HUES[i],"white")
+				if SETTING_allow_default_coloring == 1 then register_clay_craft_default(DARKNESS[4] .. HUES[i] .. SATURATION[2]) end end
+		end
 	end
 end
 
 --REGISTERS ALL BRICK COOKING RECIPES
 if SETTING_allow_types[2] + SETTING_allow_types[3] == 2 then
 	for i = 1,17 do
-	if SETTING_allow_hues[i] == 1 then
-		for k = 1,4 do
-		if SETTING_allow_darkness[k] == 1 then
-			for l = 1,2 do
-			if SETTING_allow_saturation[l] == 1 then
-				register_brick_cooking(DARKNESS[k] .. HUES[i] .. SATURATION[l])
-			end
+		if SETTING_allow_hues[i] == 1 then
+			if i > 12 then
+				register_brick_cooking(HUES[i])
+			else
+				for k = 1,4 do
+					if SETTING_allow_darkness[k] == 1 then
+						for l = 1,2 do
+							if SETTING_allow_saturation[l] == 1 then
+								register_brick_cooking(DARKNESS[k] .. HUES[i] .. SATURATION[l])
+							end
+						end
+					end
+				end
 			end
 		end
-		end
-	end
 	end
 end
 
 --REGISTERS ALL BRICK BLOCK CRAFTING RECIPES
 if SETTING_allow_types[3] + SETTING_allow_types[4] == 2 then
 	for i = 1,17 do
-	if SETTING_allow_hues[i] == 1 then
-		for k = 1,4 do
-		if SETTING_allow_darkness[k] == 1 then
-			for l = 1,2 do
-			if SETTING_allow_saturation[l] == 1 then
-				register_brick_block_craft(DARKNESS[k] .. HUES[i] .. SATURATION[l])
-			end
+		if SETTING_allow_hues[i] == 1 then
+			if i > 12 then
+				register_brick_block_craft(HUES[i])
+			else
+				for k = 1,4 do
+					if SETTING_allow_darkness[k] == 1 then
+						for l = 1,2 do
+							if SETTING_allow_saturation[l] == 1 then
+								register_brick_block_craft(DARKNESS[k] .. HUES[i] .. SATURATION[l])
+							end
+						end
+					end
+				end
 			end
 		end
-		end
-	end
 	end
 end
 
