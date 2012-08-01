@@ -18,12 +18,14 @@ SETTING_allow_default_coloring = 1
 --red, orange, yellow, lime, green, aqua, cyan, skyblue, blue, violet, magenta,
 --redviolet, black, darkgrey, mediumgrey, lightgrey, white, respectively (by default)
 SETTING_allow_hues = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
---clayblock, clay, brick, brickblock, respectively (by default)
-SETTING_allow_types = {1,1,1,1}
+--clayblock, clay, brick, singlecolor brickblock, multicolor brickblock, respectively (by default)
+SETTING_allow_types = {1,1,1,1,1}
 --half saturation, full saturation, respectively (by default)
 SETTING_allow_saturation = {1,1}
 --dark, medium, bright, light, respectively (by default)
 SETTING_allow_darkness = {1,1,1,1}
+--dark, medium, bright, respectively (by default)
+SETTING_allow_multicolor = {1,1,1}
 
 HUES = {
 	"red",
@@ -48,7 +50,8 @@ TYPES = {
 	"clayblock_",
 	"clay_",
 	"brick_",
-	"brickblock_"
+	"brickblock_",
+	"multicolor_"
 }
 SATURATION = {
 	"_s50",
@@ -84,7 +87,8 @@ FORMALTYPES = {
 	" clay",
 	" clay lump",
 	" brick",
-	" bricks"
+	" bricks",
+	" multicolor bricks"
 }
 FORMALSATURATION = {
 	" (low saturation)",
@@ -128,6 +132,21 @@ register_brick_block = function(name,formalname)
 		is_ground_content = true,
 		groups = {cracky=3},
 		drop = "unifiedbricks_" .. TYPES[3] .. name .." 4",
+		sounds = default.node_sound_stone_defaults(),
+	})
+end
+register_multicolor = function(name,formalname,drop_one,drop_two,drop_three)
+	minetest.register_node("unifiedbricks:" .. TYPES[5] .. name, {
+		description = formalname .. FORMALTYPES[5],
+		tile_images = {"unifiedbricks_" .. TYPES[5] .. name .. ".png"},
+		is_ground_content = true,
+		groups = {cracky=3},
+		drop = {max_items = 4,
+			items={
+				{items={"unifiedbricks:" .. TYPES[3] .. drop_one .." 2"}},
+				{items={"unifiedbricks:" .. TYPES[3] .. drop_two}},
+				{items={"unifiedbricks:" .. TYPES[3] .. drop_three}}
+			}},
 		sounds = default.node_sound_stone_defaults(),
 	})
 end
@@ -643,8 +662,20 @@ register_brick_block_craft = function(color)
 		}
 	})
 end
+register_multicolor_craft = function(name,drop_one,drop_two,drop_three)
+	minetest.register_craft( {
+	   type = "shapeless",
+	   output = "unifiedbricks:multicolor_" .. name,
+	   recipe = {
+			   "unifiedbricks:".. TYPES[3] .. drop_one,
+			   "unifiedbricks:".. TYPES[3] .. drop_one,
+			   "unifiedbricks:".. TYPES[3] .. drop_two,
+			   "unifiedbricks:".. TYPES[3] .. drop_three,
+		},
+	})
+end
 
---REGISTERS ALL NODES AND CRAFTITEMS
+--REGISTERS ALL NODES AND CRAFTITEMS EXCEPT MULTICOLOR BRICK BLOCKS
 for i = 1,17 do
 	if SETTING_allow_hues[i] == 1 then
 		for j = 1,4 do
@@ -808,6 +839,71 @@ if SETTING_allow_types[3] + SETTING_allow_types[4] == 2 then
 							end
 						end
 					end
+				end
+			end
+		end
+	end
+end
+
+--REGISTERS ALL MULTICOLOR EVERYTHING
+if SETTING_allow_types[5] == 1 then
+	for i = 1,13 do
+		if SETTING_allow_hues[i] == 1 then
+			if i == 13 then
+				if SETTING_allow_multicolor[1] == 1 then
+					name = HUES[14]
+					formalname = FORMALHUES[14]
+					brick_one = HUES[14]
+					brick_two = HUES[15]
+					brick_three = HUES[16]
+					register_multicolor(name,formalname,brick_one,brick_two,brick_three)
+					register_multicolor_craft(name,brick_one,brick_two,brick_three)
+				end
+				if SETTING_allow_multicolor[2] == 1 then
+					name = HUES[15]
+					formalname = FORMALHUES[15]
+					brick_one = HUES[15]
+					brick_two = HUES[14]
+					brick_three = HUES[16]
+					register_multicolor(name,formalname,brick_one,brick_two,brick_three)
+					register_multicolor_craft(name,brick_one,brick_two,brick_three)
+				end
+				if SETTING_allow_multicolor[3] == 1 then
+					name = HUES[16]
+					formalname = FORMALHUES[16]
+					brick_one = HUES[16]
+					brick_two = HUES[14]
+					brick_three = HUES[15]
+					register_multicolor(name,formalname,brick_one,brick_two,brick_three)
+					register_multicolor_craft(name,brick_one,brick_two,brick_three)
+				end
+			else
+				if SETTING_allow_multicolor[1] == 1 then
+					name = DARKNESS[1] .. HUES[i]
+					formalname = FORMALDARKNESS[1] .. FORMALHUES[i]
+					brick_one = DARKNESS[1] .. HUES[i]
+					brick_two = DARKNESS[2] .. HUES[i]
+					brick_three = DARKNESS[2] .. HUES[i] .. SATURATION[1]
+					register_multicolor(name,formalname,brick_one,brick_two,brick_three)
+					register_multicolor_craft(name,brick_one,brick_two,brick_three)
+				end
+				if SETTING_allow_multicolor[2] == 1 then
+					name = DARKNESS[2] .. HUES[i]
+					formalname = FORMALDARKNESS[2] .. FORMALHUES[i]
+					brick_one = DARKNESS[2] .. HUES[i]
+					brick_two = DARKNESS[1] .. HUES[i]
+					brick_three = DARKNESS[3] .. HUES[i] .. SATURATION[1]
+					register_multicolor(name,formalname,brick_one,brick_two,brick_three)
+					register_multicolor_craft(name,brick_one,brick_two,brick_three)
+				end
+				if SETTING_allow_multicolor[3] == 1 then
+					name = DARKNESS[4] .. HUES[i]
+					formalname = FORMALDARKNESS[4] .. FORMALHUES[i]
+					brick_one = DARKNESS[3] .. HUES[i]
+					brick_two = DARKNESS[4] .. HUES[i]
+					brick_three = DARKNESS[2] .. HUES[i] .. SATURATION[1]
+					register_multicolor(name,formalname,brick_one,brick_two,brick_three)
+					register_multicolor_craft(name,brick_one,brick_two,brick_three)
 				end
 			end
 		end
