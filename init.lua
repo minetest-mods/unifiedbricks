@@ -133,7 +133,7 @@ register_brick_block = function(name,formalname)
 		tile_images = {"unifiedbricks_" .. TYPES[4] .. name .. ".png"},
 		is_ground_content = true,
 		groups = {cracky=3, not_in_creative_inventory=1},
-		drop = "unifiedbricks_" .. TYPES[3] .. name .." 4",
+		drop = "unifiedbricks:" .. TYPES[3] .. name .." 4",
 		sounds = default.node_sound_stone_defaults(),
 	})
 end
