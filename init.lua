@@ -101,7 +101,7 @@ minetest.register_node("unifiedbricks:brickblock", {
 	drawtype = "mesh",
 	mesh = "unifiedbricks_brick_block.obj",
 	paramtype2 = "color",
-	palette = "unifiedbricks_ud_palette.png",
+	palette = "unifieddyes_palette.png",
 	is_ground_content = true,
 	groups = {cracky=3, not_in_creative_inventory=1},
 	sounds = default.node_sound_stone_defaults(),
@@ -128,7 +128,7 @@ minetest.register_node("unifiedbricks:clayblock", {
 		"unifiedbricks_clayblock.png",
 	},
 	paramtype2 = "color",
-	palette = "unifiedbricks_ud_palette.png",
+	palette = "unifieddyes_palette.png",
 	is_ground_content = true,
 	groups = {crumbly=3, not_in_creative_inventory=1},
 		sounds = default.node_sound_dirt_defaults({
