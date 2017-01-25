@@ -307,12 +307,10 @@ minetest.register_lbm({
 			minetest.set_node(pos, { name = "unifiedbricks:brickblock", param2 = paletteidx })
 			local meta = minetest.get_meta(pos)
 			meta:set_string("dye", "unifieddyes:"..color1)
-			print(dump(color))
 		elseif string.find(type, "clayblock") then
 			minetest.set_node(pos, { name = "unifiedbricks:clayblock", param2 = paletteidx })
 			local meta = minetest.get_meta(pos)
 			meta:set_string("dye", "unifieddyes:"..color1)
-			print(dump(color))
 		end
 	end
 })
