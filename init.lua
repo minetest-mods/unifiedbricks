@@ -100,6 +100,7 @@ minetest.register_node("unifiedbricks:brickblock", {
 	},
 	drawtype = "mesh",
 	mesh = "unifiedbricks_brick_block.obj",
+	paramtype = "light",
 	paramtype2 = "color",
 	palette = "unifieddyes_palette.png",
 	is_ground_content = true,
@@ -127,6 +128,7 @@ minetest.register_node("unifiedbricks:clayblock", {
 	tiles = {
 		"unifiedbricks_clayblock.png",
 	},
+	paramtype = "light",
 	paramtype2 = "color",
 	palette = "unifieddyes_palette.png",
 	is_ground_content = true,
