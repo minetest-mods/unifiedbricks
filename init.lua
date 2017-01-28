@@ -106,9 +106,7 @@ minetest.register_node("unifiedbricks:brickblock", {
 	is_ground_content = true,
 	groups = {cracky=3, not_in_creative_inventory=1},
 	sounds = default.node_sound_stone_defaults(),
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		unifieddyes.after_dig_node(pos, oldnode, oldmetadata, digger)
-	end,
+	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
 		  itemstack, pointed_thing, "unifiedbricks:brickblock")
@@ -136,9 +134,7 @@ minetest.register_node("unifiedbricks:clayblock", {
 		sounds = default.node_sound_dirt_defaults({
 			footstep = "",
 		}),
-	after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		unifieddyes.after_dig_node(pos, oldnode, oldmetadata, digger)
-	end,
+	after_dig_node = unifieddyes.after_dig_node,
 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		unifieddyes.on_rightclick(pos, node, clicker,
 		  itemstack, pointed_thing, "unifiedbricks:clayblock")
