@@ -102,7 +102,7 @@ minetest.register_node("unifiedbricks:brickblock", {
 	mesh = "unifiedbricks_brick_block.obj",
 	paramtype = "light",
 	paramtype2 = "color",
-	palette = "unifieddyes_palette.png",
+	palette = "unifieddyes_palette_extended.png",
 	is_ground_content = true,
 	groups = {cracky=3, not_in_creative_inventory=1, ud_param2_colorable = 1},
 	sounds = default.node_sound_stone_defaults(),
@@ -122,7 +122,7 @@ minetest.register_node("unifiedbricks:clayblock", {
 	},
 	paramtype = "light",
 	paramtype2 = "color",
-	palette = "unifieddyes_palette.png",
+	palette = "unifieddyes_palette_extended.png",
 	is_ground_content = true,
 	groups = {crumbly=3, not_in_creative_inventory=1, ud_param2_colorable = 1},
 		sounds = default.node_sound_dirt_defaults({
@@ -147,7 +147,7 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_dark", {
 	mesh = "unifiedbricks_brick_block.obj",
 	paramtype = "light",
 	paramtype2 = "color",
-	palette = "unifieddyes_palette.png",
+	palette = "unifieddyes_palette_extended.png",
 	is_ground_content = true,
 	groups = {cracky=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_stone_defaults(),
@@ -164,7 +164,7 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_medium", {
 	mesh = "unifiedbricks_brick_block.obj",
 	paramtype = "light",
 	paramtype2 = "color",
-	palette = "unifieddyes_palette.png",
+	palette = "unifieddyes_palette_extended.png",
 	is_ground_content = true,
 	groups = {cracky=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_stone_defaults(),
@@ -181,7 +181,7 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_light", {
 	mesh = "unifiedbricks_brick_block.obj",
 	paramtype = "light",
 	paramtype2 = "color",
-	palette = "unifieddyes_palette.png",
+	palette = "unifieddyes_palette_extended.png",
 	is_ground_content = true,
 	groups = {cracky=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_stone_defaults(),
@@ -322,6 +322,27 @@ minetest.register_lbm({
 			minetest.set_node(pos, { name = "unifiedbricks:clayblock", param2 = paletteidx })
 			local meta = minetest.get_meta(pos)
 			meta:set_string("dye", "unifieddyes:"..color1)
+		end
+	end
+})
+
+minetest.register_lbm({
+	name = "unifiedbricks:recolor_bricks",
+	label = "Convert 89-color bricks to use UD extended palette",
+	run_at_every_load = true,
+	nodenames = {
+		"unifiedbricks:clayblock",
+		"unifiedbricks:brickblock",
+		"unifiedbricks:brickblock_multicolor_dark",
+		"unifiedbricks:brickblock_multicolor_medium",
+		"unifiedbricks:brickblock_multicolor_light",
+	},
+	action = function(pos, node)
+		local meta = minetest.get_meta(pos)
+		if meta:get_string("palette") ~= "ext" then
+			print(node.param2.." --> "..unifieddyes.convert_classic_palette[node.param2])
+			minetest.swap_node(pos, { name = node.name, param2 = unifieddyes.convert_classic_palette[node.param2] })
+			meta:set_string("palette", "ext")
 		end
 	end
 })
