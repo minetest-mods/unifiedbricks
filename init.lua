@@ -334,7 +334,7 @@ minetest.register_lbm({
 minetest.register_lbm({
 	name = "unifiedbricks:recolor_bricks",
 	label = "Convert 89-color bricks to use UD extended palette",
-	run_at_every_load = true,
+	run_at_every_load = false,
 	nodenames = {
 		"unifiedbricks:clayblock",
 		"unifiedbricks:brickblock",
