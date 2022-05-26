@@ -144,7 +144,7 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_dark", {
 		"unifiedbricks_brickblock_multicolor_dark.png",
 	},
 	overlay_tiles = {
-		{ name = "unifiedbricks_mortar2.png", color = "white" }
+		{ name = "unifiedbricks_mortar.png", color = "white" }
 	},
 	paramtype = "light",
 	paramtype2 = "color",
@@ -162,7 +162,7 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_medium", {
 		"unifiedbricks_brickblock_multicolor_medium.png"
 	},
 	overlay_tiles = {
-		{ name = "unifiedbricks_mortar3.png", color = "white" }
+		{ name = "unifiedbricks_mortar.png", color = "white" }
 	},
 	paramtype = "light",
 	paramtype2 = "color",
@@ -180,7 +180,7 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_light", {
 		"unifiedbricks_brickblock_multicolor_light.png"
 	},
 	overlay_tiles = {
-		{ name = "unifiedbricks_mortar4.png", color = "white" }
+		{ name = "unifiedbricks_mortar.png", color = "white" }
 	},
 	paramtype = "light",
 	paramtype2 = "color",
