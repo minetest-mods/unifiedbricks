@@ -16,7 +16,7 @@ minetest.register_alias("unifieddyes:lightgrey","unifieddyes:lightgrey_paint")
 minetest.register_alias("unifieddyes:grey","unifieddyes:grey_paint")
 minetest.register_alias("unifieddyes:darkgrey","unifieddyes:darkgrey_paint")
 
-HUES = {
+local HUES = {
 	"red",
 	"orange",
 	"yellow",
@@ -35,25 +35,18 @@ HUES = {
 	"lightgrey",
 	"white"
 }
-TYPES = {
-	"clayblock_",
-	"clay_",
-	"brick_",
-	"brickblock_",
-	"multicolor_"
-}
-SATURATION = {
+local SATURATION = {
 	"_s50",
 	""
 }
-DARKNESS = {
+local DARKNESS = {
 	"dark_",
 	"medium_",
 	"",
 	"light_"
 }
 --formal versions
-FORMALHUES = {
+local FORMALHUES = {
 	"Red",
 	"Orange",
 	"Yellow",
@@ -72,18 +65,11 @@ FORMALHUES = {
 	"Light grey",
 	"White"
 }
-FORMALTYPES = {
-	" clay",
-	" clay lump",
-	" brick",
-	" bricks",
-	" multicolor bricks"
-}
-FORMALSATURATION = {
+local FORMALSATURATION = {
 	" (low saturation)",
 	""
 }
-FORMALDARKNESS = {
+local FORMALDARKNESS = {
 	"Dark ",
 	"Medium ",
 	"Bright ",
@@ -301,8 +287,8 @@ table.insert(unifiedbricks.old_static_list, "unifiedbricks:multicolor_lightgrey"
 for i = 1,17 do
 	for j = 1,4 do
 		if i > 12 then
-			formalname = FORMALHUES[i]
-			name = HUES[i]
+			local formalname = FORMALHUES[i]
+			local name = HUES[i]
 			if j == 1 then
 				unifiedbricks.register_old_static_block(name, formalname, "clayblock")
 			elseif j == 4 then
@@ -310,6 +296,7 @@ for i = 1,17 do
 			end
 		else
 			for k = 1,4 do
+				local formalname, name
 				if k == 4 then
 					formalname = FORMALDARKNESS[k] .. FORMALHUES[i]
 					name = DARKNESS[k] .. HUES[i]
