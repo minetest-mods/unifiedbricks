@@ -1,5 +1,5 @@
 read_globals = {
-	"minetest",
+	"core",
 	"unifieddyes",
 	"default"
 }

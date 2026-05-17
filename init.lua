@@ -11,10 +11,10 @@ unifiedbricks = {}
 unifiedbricks.old_static_list = {}
 unifiedbricks.old_static_list_formals = {}
 
-minetest.register_alias("unifieddyes:white","unifieddyes:white_paint")
-minetest.register_alias("unifieddyes:lightgrey","unifieddyes:lightgrey_paint")
-minetest.register_alias("unifieddyes:grey","unifieddyes:grey_paint")
-minetest.register_alias("unifieddyes:darkgrey","unifieddyes:darkgrey_paint")
+core.register_alias("unifieddyes:white","unifieddyes:white_paint")
+core.register_alias("unifieddyes:lightgrey","unifieddyes:lightgrey_paint")
+core.register_alias("unifieddyes:grey","unifieddyes:grey_paint")
+core.register_alias("unifieddyes:darkgrey","unifieddyes:darkgrey_paint")
 
 local HUES = {
 	"red",
@@ -78,7 +78,7 @@ local FORMALDARKNESS = {
 
 -- param2-coloring-enabled nodes
 
-minetest.register_node("unifiedbricks:brickblock", {
+core.register_node("unifiedbricks:brickblock", {
 	description = "Brick Block",
 	tiles = {
 		"unifiedbricks_brickblock.png"
@@ -93,16 +93,17 @@ minetest.register_node("unifiedbricks:brickblock", {
 	groups = {cracky=3, not_in_creative_inventory=1, ud_param2_colorable = 1},
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig,
+	preserve_metadata = unifieddyes.preserve_metadata,
+	on_dig = not unifieddyes.preserve_metadata and unifieddyes.on_dig or nil
 })
 
-minetest.override_item("default:brick", {
+core.override_item("default:brick", {
 	palette = "unifieddyes_palette_extended.png",
 	airbrush_replacement_node = "unifiedbricks:brickblock",
 	groups = {cracky = 3, ud_param2_colorable = 1},
 })
 
-minetest.register_node("unifiedbricks:clayblock", {
+core.register_node("unifiedbricks:clayblock", {
 	description = "Clay Block",
 	tiles = {
 		"unifiedbricks_clayblock.png",
@@ -115,16 +116,17 @@ minetest.register_node("unifiedbricks:clayblock", {
 			footstep = "",
 		}),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig,
+	preserve_metadata = unifieddyes.preserve_metadata,
+	on_dig = not unifieddyes.preserve_metadata and unifieddyes.on_dig or nil
 })
 
-minetest.override_item("default:clay", {
+core.override_item("default:clay", {
 	palette = "unifieddyes_palette_extended.png",
 	airbrush_replacement_node = "unifiedbricks:clayblock",
 	groups = {crumbly = 3, ud_param2_colorable = 1},
 })
 
-minetest.register_node("unifiedbricks:brickblock_multicolor_dark", {
+core.register_node("unifiedbricks:brickblock_multicolor_dark", {
 	description = "Brick block (dark multicolor)",
 	tiles = {
 		"unifiedbricks_brickblock_multicolor_dark.png",
@@ -139,10 +141,11 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_dark", {
 	groups = {cracky=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig,
+	preserve_metadata = unifieddyes.preserve_metadata,
+	on_dig = not unifieddyes.preserve_metadata and unifieddyes.on_dig or nil
 })
 
-minetest.register_node("unifiedbricks:brickblock_multicolor_medium", {
+core.register_node("unifiedbricks:brickblock_multicolor_medium", {
 	description = "Brick block (medium multicolor)",
 	tiles = {
 		"unifiedbricks_brickblock_multicolor_medium.png"
@@ -157,10 +160,11 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_medium", {
 	groups = {cracky=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig,
+	preserve_metadata = unifieddyes.preserve_metadata,
+	on_dig = not unifieddyes.preserve_metadata and unifieddyes.on_dig or nil
 })
 
-minetest.register_node("unifiedbricks:brickblock_multicolor_light", {
+core.register_node("unifiedbricks:brickblock_multicolor_light", {
 	description = "Brick block (light multicolor)",
 	tiles = {
 		"unifiedbricks_brickblock_multicolor_light.png"
@@ -175,10 +179,11 @@ minetest.register_node("unifiedbricks:brickblock_multicolor_light", {
 	groups = {cracky=3, ud_param2_colorable = 1},
 	sounds = default.node_sound_stone_defaults(),
 	on_construct = unifieddyes.on_construct,
-	on_dig = unifieddyes.on_dig,
+	preserve_metadata = unifieddyes.preserve_metadata,
+	on_dig = not unifieddyes.preserve_metadata and unifieddyes.on_dig or nil
 })
 
-minetest.register_craft( {
+core.register_craft( {
    type = "shapeless",
    output = "unifiedbricks:brickblock_multicolor_dark",
    recipe = {
@@ -189,7 +194,7 @@ minetest.register_craft( {
 	},
 })
 
-minetest.register_craft( {
+core.register_craft( {
    type = "shapeless",
    output = "unifiedbricks:brickblock_multicolor_medium",
    recipe = {
@@ -200,7 +205,7 @@ minetest.register_craft( {
 	},
 })
 
-minetest.register_craft( {
+core.register_craft( {
    type = "shapeless",
    output = "unifiedbricks:brickblock_multicolor_light",
    recipe = {
@@ -323,7 +328,7 @@ end
 
 -- convert in-map static nodes to use param2 coloring
 
-minetest.register_lbm({
+core.register_lbm({
 	name = "unifiedbricks:convert_brickblocks",
 	label = "Convert clay blocks and single-color brick blocks to use param2 color",
 	run_at_every_load = false,
@@ -358,14 +363,14 @@ minetest.register_lbm({
 				newpalette = 2
 			end
 
-			minetest.set_node(pos, { name = "unifiedbricks:brickblock_multicolor_"..shade, param2 = newpalette })
+			core.set_node(pos, { name = "unifiedbricks:brickblock_multicolor_"..shade, param2 = newpalette })
 
 		elseif string.find(type, "brickblock") then
-			minetest.set_node(pos, { name = "unifiedbricks:brickblock", param2 = paletteidx })
+			core.set_node(pos, { name = "unifiedbricks:brickblock", param2 = paletteidx })
 		elseif string.find(type, "clayblock") then
-			minetest.set_node(pos, { name = "unifiedbricks:clayblock", param2 = paletteidx })
+			core.set_node(pos, { name = "unifiedbricks:clayblock", param2 = paletteidx })
 		end
-		local meta = minetest.get_meta(pos)
+		local meta = core.get_meta(pos)
 		meta:set_string("dye", "unifieddyes:"..color1)
 		meta:set_string("palette", "ext")
 	end
